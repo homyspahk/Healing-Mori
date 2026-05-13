@@ -36,7 +36,7 @@ export default function ContactSection() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
-          <p className="text-sm tracking-[0.2em] text-muted-foreground uppercase mb-4">
+          <p className="text-base tracking-[0.2em] text-muted-foreground uppercase mb-4">
             預約方法
           </p>
           <h2 className="text-3xl md:text-5xl font-semibold text-foreground mb-6 text-balance">
@@ -65,7 +65,7 @@ export default function ContactSection() {
                 <p className="text-2xl font-medium text-primary mb-4">
                   {method.id}
                 </p>
-                <p className="text-lg text-muted-foreground">只限女賓</p>
+                <p className="text-lg text-muted-foreground">(只限女賓)</p>
               </CardContent>
             </Card>
           ))}

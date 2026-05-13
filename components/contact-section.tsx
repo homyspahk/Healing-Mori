@@ -151,11 +151,8 @@ function TestimonialsCarousel() {
     <div className="mt-16">
       {/* Section Header */}
       <div className="text-center mb-10">
-        <p className="text-primary tracking-[0.2em] uppercase mb-2 text-sm">
-          Testimonials
-        </p>
         <h3 className="text-2xl md:text-3xl font-semibold text-foreground">
-          （真實客戶回饋）
+          客戶回饋
         </h3>
       </div>
 

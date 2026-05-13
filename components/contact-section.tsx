@@ -1,5 +1,39 @@
-import { MessageCircle } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { MessageCircle, ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
+
+const testimonials = [
+  {
+    id: 1,
+    rating: 5.0,
+    quote: "Jerry 的手法非常細膩，力度拿捏得恰到好處。上門服務讓我完全放鬆，不需要擔心交通，整個過程私隱保密，非常安心。強烈推薦給同樣工作繁忙的女士！",
+    name: "Chloe W.",
+    role: "企業行政主管",
+    date: "2025年12月",
+    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
+  },
+  {
+    id: 2,
+    rating: 5.0,
+    quote: "第一次嘗試上門按摩服務，感覺非常專業和安全。Jerry 很準時，按摩技術一流，肩頸痠痛明顯改善了很多。下次一定會再預約！",
+    name: "Michelle L.",
+    role: "設計師",
+    date: "2025年11月",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+  },
+  {
+    id: 3,
+    rating: 5.0,
+    quote: "作為一位媽媽，很難抽時間去spa。Home Massage HK 的上門服務真的太方便了！Jerry 很專業，讓我在家就能享受高質素的按摩服務。",
+    name: "Sarah K.",
+    role: "全職媽媽",
+    date: "2025年10月",
+    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face",
+  },
+];
 
 const contactMethods = [
   {
@@ -96,7 +130,116 @@ export default function ContactSection() {
             </li>
           </ul>
         </div>
+
+        {/* Testimonials Section */}
+        <TestimonialsCarousel />
       </div>
     </section>
+  );
+}
+
+function TestimonialsCarousel() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextTestimonial = () => {
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
+  const current = testimonials[currentIndex];
+
+  return (
+    <div className="mt-16">
+      {/* Section Header */}
+      <div className="text-center mb-10">
+        <p className="text-primary tracking-[0.2em] uppercase mb-2 text-sm">
+          Testimonials
+        </p>
+        <h3 className="text-2xl md:text-3xl font-semibold text-foreground">
+          （真實客戶回饋）
+        </h3>
+      </div>
+
+      {/* Testimonial Card */}
+      <Card className="bg-card border-border">
+        <CardContent className="p-8 md:p-10">
+          {/* Rating */}
+          <div className="flex items-center gap-3 mb-6">
+            <span className="bg-primary text-primary-foreground px-2 py-1 rounded text-sm font-semibold flex items-center gap-1">
+              <Star className="w-3 h-3 fill-current" />
+              {current.rating.toFixed(1)}
+            </span>
+            <div className="flex gap-0.5">
+              {[...Array(5)].map((_, i) => (
+                <Star
+                  key={i}
+                  className="w-5 h-5 fill-amber-400 text-amber-400"
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Quote */}
+          <blockquote className="text-lg md:text-xl text-foreground leading-relaxed mb-8">
+            &ldquo;{current.quote}&rdquo;
+          </blockquote>
+
+          {/* Author & Navigation */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <div className="relative w-12 h-12 rounded-full overflow-hidden">
+                <Image
+                  src={current.avatar}
+                  alt={current.name}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div>
+                <p className="font-semibold text-foreground">{current.name}</p>
+                <p className="text-sm text-muted-foreground">
+                  {current.role} · {current.date}
+                </p>
+              </div>
+            </div>
+
+            {/* Navigation */}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={prevTestimonial}
+                className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-secondary transition-colors"
+                aria-label="Previous testimonial"
+              >
+                <ChevronLeft className="w-5 h-5 text-muted-foreground" />
+              </button>
+              <button
+                onClick={nextTestimonial}
+                className="w-10 h-10 rounded-full bg-foreground text-background flex items-center justify-center hover:bg-foreground/90 transition-colors"
+                aria-label="Next testimonial"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Dots Navigation */}
+      <div className="flex justify-center gap-2 mt-6">
+        {testimonials.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`w-2.5 h-2.5 rounded-full transition-colors ${
+              index === currentIndex ? "bg-foreground" : "bg-border"
+            }`}
+            aria-label={`Go to testimonial ${index + 1}`}
+          />
+        ))}
+      </div>
+    </div>
   );
 }

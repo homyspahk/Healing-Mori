@@ -1,16 +1,14 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, ReactNode } from "react";
 import { zh_TW } from "./translations/zh-TW";
 import { zh_CN } from "./translations/zh-CN";
-
-export type Locale = "zh-TW" | "zh-CN";
+import { Locale, defaultLocale } from "./config";
 
 type Translations = typeof zh_TW;
 
 interface LanguageContextType {
   locale: Locale;
-  setLocale: (locale: Locale) => void;
   t: Translations;
 }
 
@@ -21,12 +19,15 @@ const translations: Record<Locale, Translations> = {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocale] = useState<Locale>("zh-TW");
-
+export function LanguageProvider({ 
+  children,
+  locale = defaultLocale,
+}: { 
+  children: ReactNode;
+  locale?: Locale;
+}) {
   const value: LanguageContextType = {
     locale,
-    setLocale,
     t: translations[locale],
   };
 
@@ -44,3 +45,5 @@ export function useLanguage() {
   }
   return context;
 }
+
+export { translations };

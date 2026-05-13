@@ -1,4 +1,10 @@
 export const zh_CN = {
+  // Metadata
+  metadata: {
+    title: "上门按摩服务 | 香港",
+    description: "香港男按摩师，六年以上经验，提供正规推油按摩及密宗按摩。上门服务，隐私保密，只限女宾。",
+  },
+
   // Header
   header: {
     brand: "Home Massage HK",

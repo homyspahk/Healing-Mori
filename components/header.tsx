@@ -2,22 +2,21 @@
 
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/lib/i18n/context";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { locale, setLocale, t } = useLanguage();
+  const { locale, t } = useLanguage();
+
+  const alternateLocale = locale === "zh-TW" ? "zh-CN" : "zh-TW";
 
   const navLinks = [
     { href: "#about", label: t.header.nav.about },
     { href: "#services", label: t.header.nav.services },
     { href: "#area", label: t.header.nav.area },
   ];
-
-  const toggleLanguage = () => {
-    setLocale(locale === "zh-TW" ? "zh-CN" : "zh-TW");
-  };
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -41,11 +40,11 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2">
+          <Link href={`/${locale}`} className="flex items-center gap-2">
             <span className="text-xl md:text-2xl font-semibold tracking-wide text-foreground">
               Home Massage HK
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
@@ -63,13 +62,13 @@ export default function Header() {
               <a href="#contact" onClick={(e) => scrollToSection(e, "#contact")}>{t.header.nav.bookNow}</a>
             </Button>
             {/* Language Toggle */}
-            <button
-              onClick={toggleLanguage}
+            <Link
+              href={`/${alternateLocale}`}
               className="text-sm text-muted-foreground hover:text-foreground transition-colors border border-border rounded-md px-3 py-1.5"
               aria-label="Toggle language"
             >
               {locale === "zh-TW" ? "繁" : "简"} / {locale === "zh-TW" ? "简" : "繁"}
-            </button>
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -102,13 +101,13 @@ export default function Header() {
                 </a>
               </Button>
               {/* Mobile Language Toggle */}
-              <button
-                onClick={toggleLanguage}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors border border-border rounded-md px-3 py-2 mt-2"
+              <Link
+                href={`/${alternateLocale}`}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors border border-border rounded-md px-3 py-2 mt-2 text-center"
                 aria-label="Toggle language"
               >
                 {locale === "zh-TW" ? "繁體中文" : "简体中文"} → {locale === "zh-TW" ? "简体中文" : "繁體中文"}
-              </button>
+              </Link>
             </div>
           </nav>
         )}

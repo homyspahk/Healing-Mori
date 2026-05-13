@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { MessageCircle, ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import Image from "next/image";
 
 const testimonials = [
   {
@@ -13,7 +12,6 @@ const testimonials = [
     name: "Wing C.",
     role: "金融業經理",
     date: "2025年12月",
-    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=face",
   },
   {
     id: 2,
@@ -22,7 +20,6 @@ const testimonials = [
     name: "Ka Man L.",
     role: "設計師",
     date: "2025年11月",
-    avatar: "https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?w=100&h=100&fit=crop&crop=face",
   },
   {
     id: 3,
@@ -31,7 +28,6 @@ const testimonials = [
     name: "Mandy T.",
     role: "全職媽媽",
     date: "2025年10月",
-    avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&h=100&fit=crop&crop=face",
   },
 ];
 
@@ -189,21 +185,11 @@ function TestimonialsCarousel() {
 
           {/* Author & Navigation */}
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <div className="relative w-12 h-12 rounded-full overflow-hidden">
-                <Image
-                  src={current.avatar}
-                  alt={current.name}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div>
-                <p className="font-semibold text-foreground">{current.name}</p>
-                <p className="text-sm text-muted-foreground">
-                  {current.role} · {current.date}
-                </p>
-              </div>
+            <div>
+              <p className="font-semibold text-foreground">{current.name}</p>
+              <p className="text-sm text-muted-foreground">
+                {current.role} · {current.date}
+              </p>
             </div>
 
             {/* Navigation */}

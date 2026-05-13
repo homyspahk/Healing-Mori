@@ -8,6 +8,10 @@ const services = [
     description:
       "運用純熟手法配合精油，深層放鬆肌肉，舒緩疲勞與壓力，促進血液循環，讓身體恢復活力。",
     features: ["深層組織按摩", "精油芳療", "促進血液循環", "緩解肩頸痠痛"],
+    pricing: [
+      { duration: "90分鐘", price: "HKD 400" },
+      { duration: "120分鐘", price: "HKD 500" },
+    ],
   },
   {
     icon: Sparkles,
@@ -15,6 +19,10 @@ const services = [
     description:
       "結合古老智慧與現代技術，透過特殊手法喚醒身體能量，達到身心靈的和諧統一，體驗深層的療癒與放鬆。",
     features: ["身心靈療癒", "能量平衡", "深層放鬆", "內在和諧"],
+    pricing: [
+      { duration: "90分鐘", price: "HKD 400" },
+      { duration: "120分鐘", price: "HKD 500" },
+    ],
   },
 ];
 
@@ -62,6 +70,19 @@ export default function ServicesSection() {
                       {feature}
                     </div>
                   ))}
+                </div>
+
+                {/* Pricing */}
+                <div className="pt-4 border-t border-border">
+                  <div className="flex flex-wrap gap-4 mb-3">
+                    {service.pricing.map((item, priceIndex) => (
+                      <div key={priceIndex} className="flex items-baseline gap-2">
+                        <span className="text-2xl font-semibold text-primary">{item.price}</span>
+                        <span className="text-muted-foreground">/ {item.duration}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-sm text-muted-foreground">無隱藏收費</p>
                 </div>
               </CardContent>
             </Card>

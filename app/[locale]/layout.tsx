@@ -1,3 +1,4 @@
+// Locale-specific layout with i18n support
 import type { Metadata, Viewport } from 'next'
 import { Noto_Serif_TC, Noto_Serif_SC, Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'

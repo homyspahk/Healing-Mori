@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-10 md:gap-16">
           {/* Brand */}
           <div>
-            <h3 className="text-2xl font-semibold mb-4">私人按摩</h3>
+            <h3 className="text-2xl font-semibold mb-4">Home Massage HK</h3>
             <p className="text-primary-foreground/70 leading-relaxed">
               上門按摩服務
               <br />

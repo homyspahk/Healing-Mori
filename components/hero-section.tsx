@@ -1,8 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/lib/i18n/context";
 
 export default function HeroSection() {
+  const { t } = useLanguage();
+
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-16 md:pt-20">
       {/* Background Image */}
@@ -20,15 +25,15 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
         <p className="text-base md:text-lg tracking-[0.3em] text-muted-foreground uppercase mb-6">
-          上門按摩服務
+          {t.hero.subtitle}
         </p>
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold text-foreground leading-tight mb-8 text-balance">
-          讓壓力隨觸感釋放
+          {t.hero.title}
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-          香港男按摩師，超過六年經驗，為您帶來深層放鬆與身心平衡。
+          {t.hero.description}
           <br className="hidden md:block" />
-          私隱保密，只限女賓。
+          {t.hero.descriptionLine2}
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button
@@ -36,7 +41,7 @@ export default function HeroSection() {
             size="lg"
             className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-base"
           >
-            <Link href="#contact">預約服務</Link>
+            <Link href="#contact">{t.hero.bookService}</Link>
           </Button>
           <Button
             asChild
@@ -44,7 +49,7 @@ export default function HeroSection() {
             size="lg"
             className="border-foreground/20 hover:bg-foreground/5 px-8 py-6 text-base"
           >
-            <Link href="#services">了解更多</Link>
+            <Link href="#services">{t.hero.learnMore}</Link>
           </Button>
         </div>
       </div>

@@ -1,42 +1,45 @@
+"use client";
+
 import { Droplets, Sparkles } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
-const services = [
-  {
-    icon: Droplets,
-    title: "正規推油按摩",
-    description:
-      "運用純熟手法配合精油，深層放鬆肌肉，舒緩疲勞與壓力，促進血液循環，讓身體恢復活力。",
-    features: ["深層組織按摩", "精油芳療", "促進血液循環", "緩解肩頸痠痛"],
-    pricing: [
-      { duration: "90分鐘", price: "HKD 400" },
-      { duration: "120分鐘", price: "HKD 500" },
-    ],
-  },
-  {
-    icon: Sparkles,
-    title: "密宗按摩",
-    description:
-      "結合古老智慧與現代技術，透過特殊手法喚醒身體能量，達到身心靈的和諧統一，體驗深層的療癒與放鬆。",
-    features: ["身心靈療癒", "能量平衡", "深層放鬆", "內在和諧"],
-    pricing: [
-      { duration: "90分鐘", price: "HKD 400" },
-      { duration: "120分鐘", price: "HKD 500" },
-    ],
-  },
-];
+import { useLanguage } from "@/lib/i18n/context";
 
 export default function ServicesSection() {
+  const { t } = useLanguage();
+
+  const services = [
+    {
+      icon: Droplets,
+      title: t.services.oilMassage.title,
+      description: t.services.oilMassage.description,
+      features: t.services.oilMassage.features,
+      pricing: [
+        { duration: t.services.pricing.duration90, price: "HKD 400" },
+        { duration: t.services.pricing.duration120, price: "HKD 500" },
+      ],
+    },
+    {
+      icon: Sparkles,
+      title: t.services.tantricMassage.title,
+      description: t.services.tantricMassage.description,
+      features: t.services.tantricMassage.features,
+      pricing: [
+        { duration: t.services.pricing.duration90, price: "HKD 400" },
+        { duration: t.services.pricing.duration120, price: "HKD 500" },
+      ],
+    },
+  ];
+
   return (
     <section id="services" className="py-20 md:py-32 bg-background">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
           <p className="text-xl tracking-[0.2em] text-muted-foreground uppercase mb-4">
-            服務項目
+            {t.services.subtitle}
           </p>
           <h2 className="text-3xl md:text-5xl font-semibold text-foreground mb-6 text-balance">
-            專屬您的放鬆體驗
+            {t.services.title}
           </h2>
           <div className="w-16 h-0.5 bg-primary mx-auto" />
         </div>
@@ -82,7 +85,7 @@ export default function ServicesSection() {
                       </div>
                     ))}
                   </div>
-                  <p className="text-sm text-muted-foreground">無隱藏收費</p>
+                  <p className="text-sm text-muted-foreground">{t.services.noHiddenFees}</p>
                 </div>
               </CardContent>
             </Card>
@@ -92,7 +95,7 @@ export default function ServicesSection() {
         {/* Privacy Note */}
         <div className="mt-16 text-center">
           <p className="text-muted-foreground text-2xl">
-            所有服務均嚴格保密，讓您安心享受專屬時光
+            {t.services.privacyNote}
           </p>
         </div>
       </div>

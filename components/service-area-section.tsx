@@ -1,38 +1,43 @@
-import { Home, Building2, Clock } from "lucide-react";
+"use client";
 
-const locations = [
-  {
-    icon: Home,
-    title: "家中",
-    description: "在熟悉舒適的家中環境享受按摩服務",
-  },
-  {
-    icon: Building2,
-    title: "酒店",
-    description: "為旅客提供酒店上門服務，讓旅途更輕鬆",
-  },
-  {
-    icon: Clock,
-    title: "時租房",
-    description: "靈活選擇時租房作為服務地點，保護私隱",
-  },
-];
+import { Home, Building2, Clock } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/context";
 
 export default function ServiceAreaSection() {
+  const { t } = useLanguage();
+
+  const locations = [
+    {
+      icon: Home,
+      title: t.serviceArea.locations.home.title,
+      description: t.serviceArea.locations.home.description,
+    },
+    {
+      icon: Building2,
+      title: t.serviceArea.locations.hotel.title,
+      description: t.serviceArea.locations.hotel.description,
+    },
+    {
+      icon: Clock,
+      title: t.serviceArea.locations.hourlyRoom.title,
+      description: t.serviceArea.locations.hourlyRoom.description,
+    },
+  ];
+
   return (
     <section id="area" className="py-20 md:py-32 bg-card">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
           <p className="text-xl tracking-[0.2em] text-muted-foreground uppercase mb-4">
-            服務範圍
+            {t.serviceArea.subtitle}
           </p>
           <h2 className="text-3xl md:text-5xl font-semibold text-foreground mb-6 text-balance">
-            香港全區上門服務
+            {t.serviceArea.title}
           </h2>
           <div className="w-16 h-0.5 bg-primary mx-auto mb-8" />
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            提供上門服務，覆蓋香港各區，為您提供最方便的預約體驗
+            {t.serviceArea.description}
           </p>
         </div>
 
@@ -58,20 +63,18 @@ export default function ServiceAreaSection() {
         <div className="mt-16 grid md:grid-cols-2 gap-8">
           <div className="bg-secondary/50 rounded-lg p-8">
             <h3 className="text-lg font-semibold text-foreground mb-4">
-              服務區域
+              {t.serviceArea.areaInfo.title}
             </h3>
             <p className="text-muted-foreground leading-relaxed">
-              香港島、九龍、新界各區均可上門服務。
-              偏遠地區可能需要額外交通費用，詳情請預約時查詢。
+              {t.serviceArea.areaInfo.description}
             </p>
           </div>
           <div className="bg-secondary/50 rounded-lg p-8">
             <h3 className="text-lg font-semibold text-foreground mb-4">
-              服務時間
+              {t.serviceArea.timeInfo.title}
             </h3>
             <p className="text-muted-foreground leading-relaxed">
-              彈性服務時間，配合您的日程安排。
-              建議提前一至兩天預約，以確保最佳服務時段。
+              {t.serviceArea.timeInfo.description}
             </p>
           </div>
         </div>

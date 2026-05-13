@@ -3,15 +3,21 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/lib/i18n/context";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { locale, setLocale, t } = useLanguage();
 
   const navLinks = [
-    { href: "#about", label: "關於" },
-    { href: "#services", label: "服務" },
-    { href: "#area", label: "服務範圍" },
+    { href: "#about", label: t.header.nav.about },
+    { href: "#services", label: t.header.nav.services },
+    { href: "#area", label: t.header.nav.area },
   ];
+
+  const toggleLanguage = () => {
+    setLocale(locale === "zh-TW" ? "zh-CN" : "zh-TW");
+  };
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -54,8 +60,16 @@ export default function Header() {
               </a>
             ))}
             <Button asChild size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-              <a href="#contact" onClick={(e) => scrollToSection(e, "#contact")}>立即預約</a>
+              <a href="#contact" onClick={(e) => scrollToSection(e, "#contact")}>{t.header.nav.bookNow}</a>
             </Button>
+            {/* Language Toggle */}
+            <button
+              onClick={toggleLanguage}
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors border border-border rounded-md px-3 py-1.5"
+              aria-label="Toggle language"
+            >
+              {locale === "zh-TW" ? "繁" : "简"} / {locale === "zh-TW" ? "简" : "繁"}
+            </button>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -84,9 +98,17 @@ export default function Header() {
               ))}
               <Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground mt-2">
                 <a href="#contact" onClick={(e) => scrollToSection(e, "#contact")}>
-                  立即預約
+                  {t.header.nav.bookNow}
                 </a>
               </Button>
+              {/* Mobile Language Toggle */}
+              <button
+                onClick={toggleLanguage}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors border border-border rounded-md px-3 py-2 mt-2"
+                aria-label="Toggle language"
+              >
+                {locale === "zh-TW" ? "繁體中文" : "简体中文"} → {locale === "zh-TW" ? "简体中文" : "繁體中文"}
+              </button>
             </div>
           </nav>
         )}

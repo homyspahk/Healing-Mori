@@ -3,33 +3,7 @@
 import { useState } from "react";
 import { MessageCircle, ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-
-const testimonials = [
-  {
-    id: 1,
-    rating: 5.0,
-    quote: "平時在中環返工壓力好大，試過好多spa都唔夠時間去。Jerry 直接上門到我中環嘅住所，手法非常細膩，力度拿捏得恰到好處，整個過程私隱保密，非常安心。強烈推薦給同樣工作繁忙的女士！",
-    name: "Wing C.",
-    role: "金融業經理",
-    date: "2025年12月",
-  },
-  {
-    id: 2,
-    rating: 5.0,
-    quote: "上星期租咗尖沙咀區酒店渡假，想趁機放鬆一下，第一次嘗試上門按摩服務。Jerry 好準時到達酒店，感覺非常專業和安全，按摩技術一流，肩頸痠痛明顯改善了很多。下次 staycation 一定會再預約！",
-    name: "Ka Man L.",
-    role: "設計師",
-    date: "2025年11月",
-  },
-  {
-    id: 3,
-    rating: 5.0,
-    quote: "作為一位媽媽，真係好難抽時間出去做spa。Home Massage HK 的上門服務真的太方便了！Jerry 好專業，讓我在家就能享受高質素的按摩服務，終於可以好好放鬆一下。",
-    name: "Mandy T.",
-    role: "全職媽媽",
-    date: "2025年10月",
-  },
-];
+import { useLanguage } from "@/lib/i18n/context";
 
 const contactMethods = [
   {
@@ -61,20 +35,22 @@ const contactMethods = [
 ];
 
 export default function ContactSection() {
+  const { t } = useLanguage();
+
   return (
     <section id="contact" className="py-20 md:py-32 bg-background">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
           <p className="text-xl tracking-[0.2em] text-muted-foreground uppercase mb-4">
-            預約方法
+            {t.contact.subtitle}
           </p>
           <h2 className="text-3xl md:text-5xl font-semibold text-foreground mb-6 text-balance">
-            開始您的療癒旅程
+            {t.contact.title}
           </h2>
           <div className="w-16 h-0.5 bg-primary mx-auto mb-8" />
           <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-            透過以下方式聯繫預約，我會盡快回覆您的查詢
+            {t.contact.description}
           </p>
         </div>
 
@@ -95,7 +71,7 @@ export default function ContactSection() {
                 <p className="text-2xl font-medium text-primary mb-4">
                   {method.id}
                 </p>
-                <p className="text-lg text-muted-foreground">(只限女賓)</p>
+                <p className="text-lg text-muted-foreground">{t.contact.ladiesOnly}</p>
               </CardContent>
             </Card>
           ))}
@@ -105,24 +81,24 @@ export default function ContactSection() {
         <div className="bg-secondary/50 rounded-lg p-8 text-center">
           <MessageCircle className="w-10 h-10 text-primary mx-auto mb-4" />
           <h3 className="text-lg font-semibold text-foreground mb-4">
-            預約須知
+            {t.contact.bookingNotice.title}
           </h3>
           <ul className="text-muted-foreground space-y-2 max-w-lg mx-auto text-left">
             <li className="flex items-start gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-              <span>本服務只限女賓，敬請見諒</span>
+              <span>{t.contact.bookingNotice.notice1}</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-              <span>需最少早半天預約, 建議提前一至兩天預約，以確保最佳服務時段</span>
+              <span>{t.contact.bookingNotice.notice2}</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-              <span>預約時請告知服務地點、時間及所需服務類型</span>
+              <span>{t.contact.bookingNotice.notice3}</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-              <span>所有對話內容絕對保密</span>
+              <span>{t.contact.bookingNotice.notice4}</span>
             </li>
           </ul>
         </div>
@@ -136,6 +112,9 @@ export default function ContactSection() {
 
 function TestimonialsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { t } = useLanguage();
+
+  const testimonials = t.contact.testimonials.reviews;
 
   const nextTestimonial = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -152,7 +131,7 @@ function TestimonialsCarousel() {
       {/* Section Header */}
       <div className="text-center mb-10">
         <h3 className="text-2xl md:text-3xl font-semibold text-foreground">
-          客戶回饋
+          {t.contact.testimonials.title}
         </h3>
       </div>
 
@@ -163,7 +142,7 @@ function TestimonialsCarousel() {
           <div className="flex items-center gap-3 mb-6">
             <span className="bg-primary text-primary-foreground px-2 py-1 rounded text-sm font-semibold flex items-center gap-1">
               <Star className="w-3 h-3 fill-current" />
-              {current.rating.toFixed(1)}
+              5.0
             </span>
             <div className="flex gap-0.5">
               {[...Array(5)].map((_, i) => (

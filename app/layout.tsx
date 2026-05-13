@@ -1,12 +1,19 @@
 import type { Metadata, Viewport } from 'next'
-import { Noto_Serif_TC, Playfair_Display } from 'next/font/google'
+import { Noto_Serif_TC, Noto_Serif_SC, Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { LanguageProvider } from '@/lib/i18n/context'
 import './globals.css'
 
 const notoSerifTC = Noto_Serif_TC({ 
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-noto-serif-tc"
+});
+
+const notoSerifSC = Noto_Serif_SC({ 
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-noto-serif-sc"
 });
 
 const playfair = Playfair_Display({ 
@@ -48,8 +55,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-HK" className="bg-background">
-      <body className={`${notoSerifTC.variable} ${playfair.variable} font-sans antialiased`}>
-        {children}
+      <body className={`${notoSerifTC.variable} ${notoSerifSC.variable} ${playfair.variable} font-sans antialiased`}>
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

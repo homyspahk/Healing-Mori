@@ -70,7 +70,7 @@ export default function ServicesSection() {
 
         {/* Privacy Note */}
         <div className="mt-16 text-center">
-          <p className="text-muted-foreground text-sm">
+          <p className="text-muted-foreground text-2xl">
             所有服務均嚴格保密，讓您安心享受專屬時光
           </p>
         </div>

@@ -13,16 +13,16 @@ const testimonials = [
     name: "Wing C.",
     role: "金融業經理",
     date: "2025年12月",
-    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face",
+    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=face",
   },
   {
     id: 2,
     rating: 5.0,
-    quote: "住尖沙咀，第一次嘗試上門按摩服務，感覺非常專業和安全。Jerry 好準時到達，按摩技術一流，肩頸痠痛明顯改善了很多。下次一定會再預約！",
+    quote: "上星期租咗尖沙咀區酒店渡假，想趁機放鬆一下，第一次嘗試上門按摩服務。Jerry 好準時到達酒店，感覺非常專業和安全，按摩技術一流，肩頸痠痛明顯改善了很多。下次 staycation 一定會再預約！",
     name: "Ka Man L.",
     role: "設計師",
     date: "2025年11月",
-    avatar: "https://images.unsplash.com/photo-1491349174775-aaafddd81942?w=100&h=100&fit=crop&crop=face",
+    avatar: "https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?w=100&h=100&fit=crop&crop=face",
   },
   {
     id: 3,
@@ -31,7 +31,7 @@ const testimonials = [
     name: "Mandy T.",
     role: "全職媽媽",
     date: "2025年10月",
-    avatar: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=100&h=100&fit=crop&crop=face",
+    avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&h=100&fit=crop&crop=face",
   },
 ];
 

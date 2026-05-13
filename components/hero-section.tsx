@@ -19,7 +19,7 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
-        <p className="text-sm md:text-base tracking-[0.3em] text-muted-foreground uppercase mb-6">
+        <p className="text-base md:text-lg tracking-[0.3em] text-muted-foreground uppercase mb-6">
           上門按摩服務
         </p>
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold text-foreground leading-tight mb-8 text-balance">

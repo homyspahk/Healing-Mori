@@ -8,7 +8,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <h3 className="text-2xl font-semibold mb-1">Home Massage HK</h3>
-            <p className="text-primary-foreground/70 text-sm mb-4">Outcall Spa Hong Kong</p>
+            <p className="text-primary-foreground/70 text-base">Outcall Spa Hong Kong</p>
             <p className="text-primary-foreground/70 leading-relaxed">
               上門按摩服務
               <br />

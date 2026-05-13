@@ -84,7 +84,7 @@ export default function ContactSection() {
             </li>
             <li className="flex items-start gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-              <span>建議提前一至兩天預約，以確保最佳服務時段</span>
+              <span>需最少早半天預約, 建議提前一至兩天預約，以確保最佳服務時段</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />

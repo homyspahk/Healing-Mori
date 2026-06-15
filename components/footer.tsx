@@ -60,11 +60,11 @@ export default function Footer() {
             <ul className="space-y-3 text-primary-foreground/70">
               <li>
                 <span className="block text-sm">WeChat ID</span>
-                <span className="text-primary-foreground">healingmori</span>
+                <span className="text-primary-foreground">hotaura</span>
               </li>
               <li>
                 <span className="block text-sm">Line ID</span>
-                <span className="text-primary-foreground">healingmori</span>
+                <span className="text-primary-foreground">hotaura</span>
               </li>
               <li className="text-sm pt-2">只限女賓</li>
             </ul>

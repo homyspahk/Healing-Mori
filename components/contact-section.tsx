@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 const contactMethods = [
   {
     platform: "WeChat",
-    id: "healingmori",
+    id: "hotaura",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -17,7 +17,7 @@ const contactMethods = [
   },
   {
     platform: "Line",
-    id: "healingmori",
+    id: "hotaura",
     icon: (
       <svg
         viewBox="0 0 24 24"

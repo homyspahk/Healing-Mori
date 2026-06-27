@@ -37,7 +37,7 @@ export default function Header() {
           {/* Logo */}
           <a href="/" className="flex items-center gap-2">
             <span className="text-xl md:text-2xl font-semibold tracking-wide text-foreground">
-              私人按摩
+              香港男按摩師 Michael
             </span>
           </a>
 
